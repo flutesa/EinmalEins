@@ -25,11 +25,11 @@ import android.widget.Toast;
 
 public class EinmaleinsActivity extends Activity implements OnClickListener {
 
-	private int result, answer, fE, sE;	//result - ответ точный, answer - ответ пользователЯ
-	private int difficulty = 10; //сложность выражений по умолчанию - низкаЯ (ещЮ среднЯЯ и высокаЯ может быть)
-	private int i = 0; 			//по умолчанию - умножение
+	private int result, answer, fE, sE;	//result - РѕС‚РІРµС‚ С‚РѕС‡РЅС‹Р№, answer - РѕС‚РІРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РЇ
+	private int difficulty = 10; //СЃР»РѕР¶РЅРѕСЃС‚СЊ РІС‹СЂР°Р¶РµРЅРёР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РЅРёР·РєР°РЇ
+	private int i = 0; 			//РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - СѓРјРЅРѕР¶РµРЅРёРµ
 	private int j = 0;
-	private String mStr = "";	//строка длЯ записи пользовательского ввода
+	private String mStr = "";	//СЃС‚СЂРѕРєР° РґР»РЇ Р·Р°РїРёСЃРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР°
 	private final Random myRandom = new Random();
 	private final Handler handler = new Handler();
     private final Runnable newGen = new Runnable() {
@@ -89,10 +89,10 @@ public class EinmaleinsActivity extends Activity implements OnClickListener {
     		diffLevel = (TextView) findViewById(R.id.diffLevel);
     			diffLevel.setOnClickListener(this);
 
-    		generator(i); //при запуске - вызов генератора примера со стандартными параметрами сложности и операции
+    		generator(i); //РїСЂРё Р·Р°РїСѓСЃРєРµ - РІС‹Р·РѕРІ РіРµРЅРµСЂР°С‚РѕСЂР° РїСЂРёРјРµСЂР° СЃРѕ СЃС‚Р°РЅРґР°СЂС‚РЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё СЃР»РѕР¶РЅРѕСЃС‚Рё Рё РѕРїРµСЂР°С†РёРё
 
-    		ButtonCancel.setText("\u2718"); //крестик
-    		ButtonEnter.setText("\u2714");	//галочка		
+    		ButtonCancel.setText("\u2718"); //РєСЂРµСЃС‚РёРє
+    		ButtonEnter.setText("\u2714");	//РіР°Р»РѕС‡РєР°		
     	} //public void onCreate(Bundle savedInstanceState)
     	
     //@Override
@@ -139,27 +139,27 @@ public class EinmaleinsActivity extends Activity implements OnClickListener {
     			answerElement.setText(mStr);
     			break;
     		case R.id.ButtonCancel:
-    			mStr = ""; //обнулЯть переменную строки
-    			answerElement.setText(""); //обнулЯть поле ввывода
+    			mStr = ""; //РѕР±РЅСѓР»РЇС‚СЊ РїРµСЂРµРјРµРЅРЅСѓСЋ СЃС‚СЂРѕРєРё
+    			answerElement.setText(""); //РѕР±РЅСѓР»РЇС‚СЊ РїРѕР»Рµ РІРІС‹РІРѕРґР°
     			break;
-    		case R.id.ButtonEnter: //завершение ввода ответа пользователем, отображение результата и проверка
+    		case R.id.ButtonEnter: //Р·Р°РІРµСЂС€РµРЅРёРµ РІРІРѕРґР° РѕС‚РІРµС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЂРµР·СѓР»СЊС‚Р°С‚Р° Рё РїСЂРѕРІРµСЂРєР°
     			try{
-    			answer = Integer.valueOf(mStr); //преобразование строки в число
-    			checkEnteredAnswer(answer); //отправка ответа на проверку
-    			mStr = ""; //обнулЯть переменную строки
-    			handler.postDelayed(newGen, 300); //с задержкой в 300 милисекунд запускаем следующий пример
+    			answer = Integer.valueOf(mStr); //РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Рѕ
+    			checkEnteredAnswer(answer); //РѕС‚РїСЂР°РІРєР° РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРІРµСЂРєСѓ
+    			mStr = ""; //РѕР±РЅСѓР»РЇС‚СЊ РїРµСЂРµРјРµРЅРЅСѓСЋ СЃС‚СЂРѕРєРё
+    			handler.postDelayed(newGen, 300); //СЃ Р·Р°РґРµСЂР¶РєРѕР№ РІ 300 РјРёР»РёСЃРµРєСѓРЅРґ Р·Р°РїСѓСЃРєР°РµРј СЃР»РµРґСѓСЋС‰РёР№ РїСЂРёРјРµСЂ
     			} catch(Exception e){  } finally{  }
     			break;
-    		case R.id.answerElement: //переход в статистику приложениЯ
+    		case R.id.answerElement: //РїРµСЂРµС…РѕРґ РІ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїСЂРёР»РѕР¶РµРЅРёРЇ
     			statistics();
     			break;
-    		case R.id.operation: //смена знака операции по нажатию на знак
-    			answerElement.setText(""); //длЯ нового сгенерированного примера очищаем ответ
+    		case R.id.operation: //СЃРјРµРЅР° Р·РЅР°РєР° РѕРїРµСЂР°С†РёРё РїРѕ РЅР°Р¶Р°С‚РёСЋ РЅР° Р·РЅР°Рє
+    			answerElement.setText(""); //РґР»РЇ РЅРѕРІРѕРіРѕ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ РїСЂРёРјРµСЂР° РѕС‡РёС‰Р°РµРј РѕС‚РІРµС‚
     			i++;
     			if (i==4) { i=0; generator(i); }
     			if (i<4) generator(i);
     			break;
-    		case R.id.diffLevel: //смена уровнЯ сложности выражений
+    		case R.id.diffLevel: //СЃРјРµРЅР° СѓСЂРѕРІРЅРЇ СЃР»РѕР¶РЅРѕСЃС‚Рё РІС‹СЂР°Р¶РµРЅРёР№
     			j++;
     			if (j==1) { difficulty = 101;  answerElement.setText(""); generator(i); Toast.makeText(getApplicationContext(), "medium", 0).show(); }
     			if (j==2) { difficulty = 1001; answerElement.setText(""); generator(i); Toast.makeText(getApplicationContext(), "hard", 0).show(); }
@@ -168,7 +168,7 @@ public class EinmaleinsActivity extends Activity implements OnClickListener {
     	} //switch (v.getId())
     } //public void onClick(View v)
     
-	private void checkEnteredAnswer(int answer) { //проверка ответа и косметические операции в свЯзи с этим
+	private void checkEnteredAnswer(int answer) { //РїСЂРѕРІРµСЂРєР° РѕС‚РІРµС‚Р° Рё РєРѕСЃРјРµС‚РёС‡РµСЃРєРёРµ РѕРїРµСЂР°С†РёРё РІ СЃРІРЇР·Рё СЃ СЌС‚РёРј
 		if (answer==result) {
 			answerElement.setTextColor(Color.GREEN); 
 			answerElement.setTypeface(null, Typeface.BOLD);  
@@ -183,7 +183,7 @@ public class EinmaleinsActivity extends Activity implements OnClickListener {
 			}
 	} //private void checkEnteredAnswer(int answer)
 
-	public int generator(int i) { //в зависимости от знака операции вызывает нужный метод
+	public int generator(int i) { //РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ Р·РЅР°РєР° РѕРїРµСЂР°С†РёРё РІС‹Р·С‹РІР°РµС‚ РЅСѓР¶РЅС‹Р№ РјРµС‚РѕРґ
 		if (i==0) { operation.setText(" * "); multiplication(); result = multiplication(); }
 		if (i==1) { operation.setText(" : "); division(); result = division(); }
 		if (i==2) { operation.setText(" + "); addition(); result = addition(); }
@@ -191,7 +191,7 @@ public class EinmaleinsActivity extends Activity implements OnClickListener {
 	return result;
 	} //public int generator(int i)
     
-    public int multiplication() { //умножение чисел от 2 до 9    	    	
+    public int multiplication() { //СѓРјРЅРѕР¶РµРЅРёРµ С‡РёСЃРµР» РѕС‚ 2 РґРѕ 9    	    	
     	do {
     		fE = myRandom.nextInt(difficulty);
     		sE = myRandom.nextInt(difficulty);
@@ -205,7 +205,7 @@ public class EinmaleinsActivity extends Activity implements OnClickListener {
 		return result;    	
     } //public int multiplication()
     
-    public int division() { //деление чисел
+    public int division() { //РґРµР»РµРЅРёРµ С‡РёСЃРµР»
     	do {
     		fE = myRandom.nextInt(difficulty);
     		sE = myRandom.nextInt(difficulty);
@@ -220,7 +220,7 @@ public class EinmaleinsActivity extends Activity implements OnClickListener {
 		return result;    	
     } //public int division()
     
-    public int addition() { //сложение чисел, от 2 до 100
+    public int addition() { //СЃР»РѕР¶РµРЅРёРµ С‡РёСЃРµР», РѕС‚ 2 РґРѕ 100
     	do {
     		fE = myRandom.nextInt(difficulty);
     		sE = myRandom.nextInt(difficulty);
@@ -235,7 +235,7 @@ public class EinmaleinsActivity extends Activity implements OnClickListener {
 		return result;    	
     } //public int addition()
     
-    public int subtraction() { //вычитание чисел
+    public int subtraction() { //РІС‹С‡РёС‚Р°РЅРёРµ С‡РёСЃРµР»
     	do {
     		fE = myRandom.nextInt(difficulty);
     		sE = myRandom.nextInt(difficulty);
@@ -250,7 +250,7 @@ public class EinmaleinsActivity extends Activity implements OnClickListener {
 		return result;    	
     } //public int subtraction()
     
-    public void statistics() { //выводит экран статистики
+    public void statistics() { //РІС‹РІРѕРґРёС‚ СЌРєСЂР°РЅ СЃС‚Р°С‚РёСЃС‚РёРєРё
     	//operation.setText(mStr);
     } //public void statistics()
 } //public class EinmaleinsActivity
